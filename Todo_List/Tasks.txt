@@ -1,0 +1,42 @@
+TODO LIST DAY 1
+    1. Create a new Flask app in your FlaskApps repo called "Todo_List"
+    2. This Flask app should have 1 table called "todos" containing the following columns:
+        1. ID (INT)
+        2. Task (String)
+        3. Complete (Boolean)
+    3. This app should contain a create.py that connects to the DB and creates the table
+    4. The app should return "This is a TODO list" on the index(/)
+    5. (Stretch Goal) Add some entries to the todos table and get the app to return the entries on the scree at '/todos'
+
+TODO LIST DAY 2
+    1. Create routes that ADDS a new Todo with the value 'New Todo' every time
+    2. Create 2 routes:
+        1. one that completes the todo specified in the path (i.e. /complete/1 will complete Todo with ID 1). It should return a message saying 'Completed Todo 1'
+        2. the second one will delete the Todo in the path (i.e. '/delete/1' will delete Todo with ID 1)
+    3. Create 2 templates:
+        1. a 'layout.html' (it will have the layout)
+        2. 'index.html (which displays all Todos)
+    4. Change your template to show a tick ('&#9989') if the Todo is complete
+    5. Create a  (THIS IS ANOTHER CLASS) that will allow users to enter Todos and put this form in a new template called 'add.html'
+    6. (Stretch Goal) Add buttons at the top of every page to take you to the 'Home' and 'Add' pages to make it easier to navigate
+
+TODO LIST DAY 3
+1. Add buttons next to each todo in your index.html that allow you complete/incomplete your todo and delete your todo
+2. Create an update.html and an update route that will use the same form as the add template to update the task of a todo.
+        1. So a user will go to '/update/<int:todo_id>' and will be able to update that todo
+3. use <a href=""></a> to create hyperlinks to your add and home pages
+4. Start writing tests for your Yodo List app
+5. Run you app in a GCP VM 
+        1. Create an Ubuntu 18.04 LTS VM
+        2. Create a firewall rule for port 5000 on the virtual machine
+        SSH into the VM and run these commands:
+                1. git clone(your repo)
+                2. cd (your repo)
+                3. sudo apt update
+                4. sudo apt install python3 python3-pip
+                5. ip3 install -r requirements.txt (if you have a requirements file)
+                6. python3 app.py
+6. Create a new form and route that will allow a user to order their todos by (Oldest, Newest, Completed and Not Completed)
+7. Get the app to give messages if more than 3 todos are incomplete, if all todos are complete and if they are not todos.
+
+

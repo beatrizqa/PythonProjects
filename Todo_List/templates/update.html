@@ -1,0 +1,14 @@
+<!-- same as the other templates, we need to extend from 'layout.html'-->
+
+{% extends "layout.html" %}
+
+{% block body %}
+<!-- starts the block -->
+<form action='' method='POST'>
+    <!-- we want to display a form that allows the user to update the todos -->
+    {{ form.hidden_tag() }}
+    {{ form.task.label }} {{ form.task }}
+    <br>
+    {{ form.submit }}
+</form>
+{% endblock body %}

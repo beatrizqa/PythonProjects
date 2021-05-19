@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- we take the heading (<h1>Todo App</h1>) and move it to Layout.html as all the forms extend from that one -->
+
+{% for todo in all_todos %}
+
+<!-- Line 10 is for task 2.3.2
+<p>{{ todo.task }} {{ todo.complete }}</p> #todo.task shows a column -->
+
+<!-- for task 2.4 (have a tick box next to complete) we need the code in line 13 - 16
+<p>{{ todo.id}} {{ todo.task }}
+    {% if todo.complete == True %}
+    &#9989
+    ## this will only show up if it is TRUE
+    {% endif %}
+</p> -->
+
+
+<!-- If the todo is complete we want a button that says incomplete; if the todo is incomplete we want a button that says complete-->
+<p>{{ todo.id}} {{ todo.task }}
+    {% if todo.complete == True %}
+    &#9989
+    <!-- the action is the URL this button will take me to-->
+<form action="{{ url_for('incomplete', todo_id=todo.id) }}">
+    <input type=submit value="Incomplete"></input> <!-- 'Incomplete' will appear on the button-->
+</form>
+
+<!-- we want the same thing if it is incomplete with a small change -->
+{% else %}
+<form action="{{ url_for('complete', todo_id=todo.id) }}">
+    <input type=submit value="Complete"></input>
+</form>
+{% endif %}
+
+<!-- we need another form to add an 'UPDATE' button-->
+<form action="{{ url_for('update', todo_id=todo.id) }}">
+    <input type=submit value="Update"></input>
+</form>
+
+<!-- to be able to delete any todo, we will need a delete button that we will get through a FORM because we want it always appear even if the todo is incomplete-->
+<form action="{{ url_for('delete', todo_id=todo.id) }}">
+    <input type="submit" value='Delete'></input>
+</form>
+
+</p>
+
+{% endfor%}
+
+{% endblock body %}
+
+
+<!-- 1. extends from 'layout.html' so we will get everything from layout.html but whatever we put in the block body in here
+        will go in the 'layout body block'
+    2. in the body we want to list all the todos (line 12) so we are going to need a for loop.
+    3. the variable 'all_todos' can be decided in here. We can call it whatever we wanted. We are just going to call it
+        'all_todos'
+    4. in line 18 we just show the 'todo'
+    5. Go back to 'app.py' in the index route and ask it to use the 'index.html' file
+-->
+
+<!-- For task 3.1 ==> Add buttons next to each todo in your index.html that allow you complete/incomplete your todo and delete your todo
+        1. if we are using a button we are going to need a form
+        2. If the todo is complete I want a form
+                1. in the form we want a button ==>> input type=submit
+            -->
